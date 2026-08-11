@@ -1,0 +1,21 @@
+# Environment and configuration
+.env
+.env.*
+!.env.example
+config/local.php
+config/config.php
+
+# User uploads
+uploads/*
+!uploads/.gitkeep
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Logs and dependencies
+*.log
+vendor/
+node_modules/
