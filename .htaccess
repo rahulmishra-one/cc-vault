@@ -1,12 +1,18 @@
 Options -Indexes
+DirectoryIndex index.php
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteRule ^(?:config|database|includes)/ - [F,L,NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^$ index.php [L]
 </IfModule>
 
-<FilesMatch "^(config\.php|config\.example\.php)$">
+<FilesMatch "\.(?:env|ini|log|md|sql)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^(?:\.|config\.php|config\.example\.php)$">
     Require all denied
 </FilesMatch>
