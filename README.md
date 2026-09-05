@@ -28,19 +28,19 @@ CC Vault is a modular credit-card dashboard built with PHP, MySQL, HTML, CSS, an
 The development login is:
 
 - Email: `admin@ccvault.local`
-- Password: `password`
+- Password: `CCVault!2026`
 
-Change this immediately after deployment by creating a new bcrypt hash with PHP's `password_hash()` and updating the `users.password_hash` value.
+Change this immediately after deployment using **Change password** in the sidebar. CC Vault will automatically sign you out after 30 minutes of inactivity.
 
 ## Hostinger deployment
 
 1. Create a MySQL database and user in hPanel.
 2. Import `database/database.sql` through phpMyAdmin.
 3. Upload the contents of this folder to the document root for `cc.rahulmishra.org` (usually `public_html`).
-4. Create `config/config.php` from the example and enter the production database credentials.
-5. Visit the domain and log in. Set `APP_ENV` to `production` in `config/config.php`.
+4. Create `config/config.php` from the example and enter the production database credentials. Set `APP_ENV` to `production`, `APP_URL` to your HTTPS address, and keep `SESSION_TIMEOUT` at `1800`.
+5. Visit the domain, sign in, and immediately choose **Change password**.
 
-Do not upload `.env` files or commit `config/config.php` with real production credentials.
+Do not upload `.env` files or commit `config/config.php` with real production credentials. Ensure HTTPS is active before enabling public access.
 
 ## Roadmap
 
