@@ -9,19 +9,25 @@ if (isLoggedIn()) {
 
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-    $password = $_POST['password'] ?? '';
-    $statement = db()->prepare('SELECT id, password_hash FROM users WHERE email = :email AND is_active = 1 LIMIT 1');
-    $statement->execute(['email' => $email ?: '']);
-    $user = $statement->fetch();
+    if (!verifyCsrfToken()) {
+        $error = 'Your session has expired. Please try again.';
+    } else {
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $password = $_POST['password'] ?? '';
+        $statement = db()->prepare('SELECT id, password_hash FROM users WHERE email = :email AND is_active = 1 LIMIT 1');
+        $statement->execute(['email' => $email ?: '']);
+        $user = $statement->fetch();
 
-    if ($user && password_verify($password, $user['password_hash'])) {
-        session_regenerate_id(true);
-        $_SESSION['user_id'] = (int) $user['id'];
-        header('Location: dashboard.php');
-        exit;
+        if ($user && password_verify($password, $user['password_hash'])) {
+            session_regenerate_id(true);
+            $_SESSION['user_id'] = (int) $user['id'];
+            $_SESSION['last_activity'] = time();
+            header('Location: dashboard.php');
+            exit;
+        }
+        usleep(250000);
+        $error = 'Please check your email address and password.';
     }
-    $error = 'Please check your email address and password.';
 }
 
 $pageTitle = 'Sign in';
@@ -35,6 +41,7 @@ require __DIR__ . '/includes/header.php';
         <p class="muted">Sign in to manage your cards and unlock smarter recommendations.</p>
         <?php if ($error): ?><p class="alert" role="alert"><?= escape($error) ?></p><?php endif; ?>
         <form method="post" class="login-form">
+            <input type="hidden" name="csrf_token" value="<?= escape(csrfToken()) ?>">
             <label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label>
             <label>Password<input type="password" name="password" required autocomplete="current-password" placeholder="••••••••"></label>
             <button type="submit">Sign in</button>
