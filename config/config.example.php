@@ -5,6 +5,7 @@ declare(strict_types=1);
 const APP_NAME = 'CC Vault';
 const APP_ENV = 'development';
 const APP_URL = 'http://localhost/cc-vault';
+const SESSION_TIMEOUT = 1800;
 
 const DB_HOST = 'localhost';
 const DB_NAME = 'cc_vault';
