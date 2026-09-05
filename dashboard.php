@@ -7,6 +7,7 @@ $user = currentUser();
 $cards = db()->query('SELECT card_name, issuer, network, last_four, annual_fee, status FROM cards WHERE status = "active" ORDER BY created_at DESC LIMIT 4')->fetchAll();
 $summary = db()->query('SELECT COUNT(*) AS card_count, COALESCE(SUM(annual_fee), 0) AS annual_fees FROM cards WHERE status = "active"')->fetch();
 $pageTitle = 'Dashboard';
+$activePage = 'dashboard';
 require __DIR__ . '/includes/header.php';
 ?>
 <div class="app-shell">
