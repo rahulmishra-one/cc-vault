@@ -60,9 +60,9 @@ CREATE TABLE recommendations (
     INDEX idx_recommendations_user_score (user_id, score)
 ) ENGINE=InnoDB;
 
--- Development user. Password: password (change immediately after first login).
+-- Initial administrator. Password: CCVault!2026 (change immediately after first login).
 INSERT INTO users (full_name, email, password_hash) VALUES
-('CC Vault Admin', 'admin@ccvault.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.zda0J0eMp8NpVT/2');
+('CC Vault Admin', 'admin@ccvault.local', '$2y$12$O26N60riUQmeRDgIYL9diu6kWTNM.9qOzbCJMrm0Vf0YLLE6aL2/C');
 
 INSERT INTO cards (user_id, card_name, issuer, network, last_four, annual_fee) VALUES
 (1, 'Regalia Gold', 'HDFC Bank', 'Visa', '3421', 2500.00),
