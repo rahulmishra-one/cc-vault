@@ -6,10 +6,14 @@
 - Authentication, responsive dashboard, and starter card data
 - Shared layout, navigation, and deployment documentation
 
-## Sprint 2 — Cards and merchants
+## Sprint 2 — Cards (complete)
 
-- Create, edit, archive, and filter cards
-- Card benefits, fees, billing cycles, and renewal reminders
+- Create, edit, and archive cards without storing sensitive card data
+- Card benefits, annual fees, billing cycles, renewal dates, and private notes
+- Responsive card-management workspace
+
+## Sprint 2.1 — Merchants
+
 - Merchant directory with supported card offers
 
 ## Sprint 3 — Search and recommendations
