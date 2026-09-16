@@ -12,6 +12,12 @@ CC Vault is a modular credit-card dashboard built with PHP, MySQL, HTML, CSS, an
 - MySQL schema with starter data
 - Module-ready structure for cards, merchants, search, and recommendations
 
+## Sprint 2 included
+
+- Add, edit, and archive cards without storing full card numbers, CVVs, PINs, or OTPs
+- Track safe operational details: last four digits, annual fee, billing day, renewal date, and notes
+- Add and remove card benefits such as lounge access, cashback, travel, and insurance
+
 ## Requirements
 
 - PHP 8.0+ with PDO MySQL enabled
@@ -36,11 +42,19 @@ Change this immediately after deployment using **Change password** in the sideba
 
 1. Create a MySQL database and user in hPanel.
 2. Import `database/database.sql` through phpMyAdmin.
-3. Upload the contents of this folder to the document root for `cc.rahulmishra.org` (usually `public_html`).
+3. Upload the contents of this folder to the document root for `cc.rahulmishra.one` (usually `public_html`).
 4. Create `config/config.php` from the example and enter the production database credentials. Set `APP_ENV` to `production`, `APP_URL` to your HTTPS address, and keep `SESSION_TIMEOUT` at `1800`.
 5. Visit the domain, sign in, and immediately choose **Change password**.
 
 Do not upload `.env` files or commit `config/config.php` with real production credentials. Ensure HTTPS is active before enabling public access.
+
+## Updating an existing installation to Sprint 2
+
+1. In phpMyAdmin, select the CC Vault database and import `database/sprint-2-cards.sql` **once**.
+2. Upload the Sprint 2 application files to the site document root, replacing existing files but preserving `config/config.php`.
+3. Sign in and open **My Cards** from the sidebar.
+
+The migration adds billing, renewal, and notes fields. It does not alter stored passwords or card data.
 
 ## Roadmap
 
