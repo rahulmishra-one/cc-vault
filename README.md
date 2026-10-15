@@ -42,13 +42,17 @@ Change this immediately after deployment using **Change password** in the sideba
 
 1. Create a MySQL database and user in hPanel.
 2. Import `database/database.sql` through phpMyAdmin.
-3. Upload the contents of this folder to the document root for `rahulmishra.online` (usually `public_html`).
+3. Upload the contents of this folder to the document root for `vault.rahulmishra.online` (usually the directory selected for that subdomain in hPanel).
 4. Create `config/config.php` from the example and enter the production database credentials. Set `APP_ENV` to `production`, `APP_URL` to your HTTPS address, and keep `SESSION_TIMEOUT` at `1800`.
 5. Visit the domain, sign in, and immediately choose **Change password**.
 
 Do not upload `.env` files or commit `config/config.php` with real production credentials. Ensure HTTPS is active before enabling public access.
 
 For a new installation, import the complete `database/database.sql` file only. It already includes the Sprint 2 card fields; `database/sprint-2-cards.sql` is only for upgrading an older CC Vault database.
+
+## Privacy boundary
+
+CC Vault is the private application. It deliberately stores card metadata only: it does not store full card numbers, CVVs, PINs, OTPs, bank passwords, or other payment credentials.
 
 ## Updating an existing installation to Sprint 2
 
