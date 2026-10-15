@@ -4,7 +4,7 @@ declare(strict_types=1);
 // Copy this file to config.php and enter your own values. Never commit config.php.
 const APP_NAME = 'CC Vault';
 const APP_ENV = 'development';
-const APP_URL = 'https://cc.rahulmishra.one';
+const APP_URL = 'https://rahulmishra.online';
 const SESSION_TIMEOUT = 1800;
 
 const DB_HOST = 'localhost';
